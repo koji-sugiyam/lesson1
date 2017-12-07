@@ -29,7 +29,7 @@ public class SecondTermTwoForSpringController {
 
 		//date
     	Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 YY:mm:ss");
         String nowDate = formatter.format(date);
 
         
@@ -46,14 +46,18 @@ public class SecondTermTwoForSpringController {
     	
     	name = KSInstance.getName();
     	score = KSInstance.getScore();
+    	/*
         stFormat = "%sの%sさんの点数は%d点です。";
     	resultString = String.format(stFormat, nowDate, name, score);
     	
-    	//return resultString;
-    
+    	return resultString;
+    	*/
     	
     	//試しにでJSON出してみる。
-    	String json = "{\"result\":[{\"name\":\"杉山\",\"score\":30},{\"name\":\"弘二\",\"score\":40}]}";
+    	//String json = "{\"result\":[{\"name\":\"杉山\",\"score\":30},{\"name\":\"弘二\",\"score\":40}]}";
+        stFormat = "{\"date\":\"%s\",\"result\":[{\"name\":\"%s\",\"score\":%d}]}";
+        String json = String.format(stFormat, nowDate, name, score, name, score);
+    	
     	return json;
     	
     
