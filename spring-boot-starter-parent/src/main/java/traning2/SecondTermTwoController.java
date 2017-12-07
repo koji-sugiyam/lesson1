@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
-import java.util.Scanner;
 
 
 @Controller
@@ -36,14 +35,62 @@ public class SecondTermTwoController {
     
     public static void main(String [] args) {
 
-    	Student STinstance = new Student();
-    	STinstance.setName("杉山");
-    	STinstance.setScore(10);
+    	//date
+    	Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日");
+        String nowDate = formatter.format(date);
+
+        
+        //初期化
+        String name;
+        int score;
+        String resultString;
+        String ｓｔFormat;
+        
+        //データ 杉山
+    	Student KSInstance = new Student();
+    	KSInstance.setName("杉山");
+    	KSInstance.setScore(10);
     	
-    	String name = STinstance.getName();
-    	int score = STinstance.getScore();
-    	String resultString = name + "さんの点数は、" + score + "点です。";
+    	name = KSInstance.getName();
+    	score = KSInstance.getScore();
+    	//String resultString = nowDate + "の" +  name + "さんの点数は、" + score + "点です。";
+    	//resultString = String.format("%sの%sさんの点数は%d点です。", nowDate, name, score);
+        ｓｔFormat = "%sの%sさんの点数は%d点です。";
+    	resultString = String.format(ｓｔFormat, nowDate, name, score);
     	sEcho(resultString);
+    
+    	
+        //データ 友達
+    	Student FRInstance = new Student();
+    	FRInstance.setName("友達");
+    	FRInstance.setScore(60);
+    	
+    	name = FRInstance.getName();
+    	score = FRInstance.getScore();
+        ｓｔFormat = "%sの%sさんの点数は%d点です。";
+    	resultString = String.format(ｓｔFormat, nowDate, name, score);
+    	sEcho(resultString);
+    	
+    	
+    	//別の構文
+
+        //データ 杉山
+    	Student KojiSugiyama = new Student();
+    	KojiSugiyama.name = "杉山";
+    	KojiSugiyama.score =30;
+        ｓｔFormat = "%sの%sさんの点数は%d点です。";
+    	resultString = String.format(ｓｔFormat, nowDate, KojiSugiyama.name, KojiSugiyama.score);
+    	sEcho(resultString);
+    	
+    	//コンストラクトしてみる
+        //データ 杉山
+    	Student CONSTInstance = new Student("杉山",35);
+        ｓｔFormat = "%sの%sさんの点数は%d点です。";
+    	resultString = String.format(ｓｔFormat, nowDate, CONSTInstance.name, CONSTInstance.score);
+    	sEcho(resultString);
+    	
+    	
     }
 }
 
@@ -57,6 +104,22 @@ public class SecondTermTwoController {
 	static String name;
 	static int score;
 	static final int MAX_SCORE = 100;
+	
+	//コンストラクタ 3パターン
+	Student(String name, int score){
+		this.name = name;
+		this.score = score;
+	}
+	Student(String name){
+		this.name = name;
+	}
+	Student(int score){
+		this.score = score;
+	}
+	Student(){
+	}
+	//デストラクタはないのかな？
+	
 	
 	static void setName(String newName) {
 		name = newName;
