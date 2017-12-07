@@ -1,6 +1,6 @@
 package traning2;
 
-class Student{
+public class Student{
 	
 	static String name;
 	static int score;
