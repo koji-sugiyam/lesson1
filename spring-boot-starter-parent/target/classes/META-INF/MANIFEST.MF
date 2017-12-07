@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Implementation-Title: spring-boot-starter-parent
 Implementation-Version: 1.5.9.RELEASE
 Built-By: koji.sugiyama
-Implementation-Vendor-Id: org.springframework.boot.aaaaaa
+Implementation-Vendor-Id: jp.sugiyama.traning
 Build-Jdk: 1.8.0_151
 Implementation-URL: http://maven.apache.org
 Created-By: Maven Integration for Eclipse
