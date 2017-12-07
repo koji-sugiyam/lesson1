@@ -45,7 +45,7 @@ public class SecondTermTwoController {
         String name;
         int score;
         String resultString;
-        String ｓｔFormat;
+        String stFormat;
         
         //データ 杉山
     	Student KSInstance = new Student();
@@ -56,8 +56,8 @@ public class SecondTermTwoController {
     	score = KSInstance.getScore();
     	//String resultString = nowDate + "の" +  name + "さんの点数は、" + score + "点です。";
     	//resultString = String.format("%sの%sさんの点数は%d点です。", nowDate, name, score);
-        ｓｔFormat = "%sの%sさんの点数は%d点です。";
-    	resultString = String.format(ｓｔFormat, nowDate, name, score);
+        stFormat = "%sの%sさんの点数は%d点です。";
+    	resultString = String.format(stFormat, nowDate, name, score);
     	sEcho(resultString);
     
     	
@@ -68,8 +68,8 @@ public class SecondTermTwoController {
     	
     	name = FRInstance.getName();
     	score = FRInstance.getScore();
-        ｓｔFormat = "%sの%sさんの点数は%d点です。";
-    	resultString = String.format(ｓｔFormat, nowDate, name, score);
+        stFormat = "%sの%sさんの点数は%d点です。";
+    	resultString = String.format(stFormat, nowDate, name, score);
     	sEcho(resultString);
     	
     	
@@ -79,15 +79,15 @@ public class SecondTermTwoController {
     	Student KojiSugiyama = new Student();
     	KojiSugiyama.name = "杉山";
     	KojiSugiyama.score =30;
-        ｓｔFormat = "%sの%sさんの点数は%d点です。";
-    	resultString = String.format(ｓｔFormat, nowDate, KojiSugiyama.name, KojiSugiyama.score);
+        stFormat = "%sの%sさんの点数は%d点です。";
+    	resultString = String.format(stFormat, nowDate, KojiSugiyama.name, KojiSugiyama.score);
     	sEcho(resultString);
     	
     	//コンストラクトしてみる
         //データ 杉山
     	Student CONSTInstance = new Student("杉山",35);
-        ｓｔFormat = "%sの%sさんの点数は%d点です。";
-    	resultString = String.format(ｓｔFormat, nowDate, CONSTInstance.name, CONSTInstance.score);
+        stFormat = "%sの%sさんの点数は%d点です。";
+    	resultString = String.format(stFormat, nowDate, CONSTInstance.name, CONSTInstance.score);
     	sEcho(resultString);
     	
     	
