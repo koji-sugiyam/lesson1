@@ -18,8 +18,7 @@ public class ThirdTermTwoController {
         SpringApplication.run(ThirdTermTwoController.class, args);
     }
 
-    
-    private static final int LocalDateTime = 0;
+  
 
 	@RequestMapping("/")
     @ResponseBody
@@ -35,6 +34,8 @@ public class ThirdTermTwoController {
 		
 		return string;
 	}
+	
+	
 
     
 }

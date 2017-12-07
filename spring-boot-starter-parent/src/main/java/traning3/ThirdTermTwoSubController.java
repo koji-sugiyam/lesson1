@@ -19,7 +19,6 @@ public class ThirdTermTwoSubController extends ThirdTermTwoController {
     }
 
     
-    private static final int LocalDateTime = 0;
 
 	@RequestMapping("/")
     @ResponseBody
