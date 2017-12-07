@@ -37,7 +37,7 @@ public class SecondTermTwoForSpringController {
         String name;
         int score;
         String resultString;
-        String ｓｔFormat;
+        String stFormat;
         
         //データ 杉山
     	Student KSInstance = new Student();
@@ -46,8 +46,8 @@ public class SecondTermTwoForSpringController {
     	
     	name = KSInstance.getName();
     	score = KSInstance.getScore();
-        ｓｔFormat = "%sの%sさんの点数は%d点です。";
-    	resultString = String.format(ｓｔFormat, nowDate, name, score);
+        stFormat = "%sの%sさんの点数は%d点です。";
+    	resultString = String.format(stFormat, nowDate, name, score);
     	
     	//return resultString;
     
