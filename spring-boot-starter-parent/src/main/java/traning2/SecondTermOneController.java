@@ -19,7 +19,7 @@ public class SecondTermOneController {
 	@RequestMapping("/")
     @ResponseBody
     String home() {
-        return "Hello World!";
+        return "SecondTermOneController";
     }
     
 	
