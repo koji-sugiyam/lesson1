@@ -30,7 +30,7 @@ public class ThirdTermTwoController {
     
 	public static String superFunc() {
 		
-		String string = "superだよん";
+		String string = "superだよん。";
 		
 		return string;
 	}
