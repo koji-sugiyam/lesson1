@@ -41,7 +41,7 @@ public class SecondTermTwoForSpringController {
         
         //データ 杉山
     	Student KSInstance = new Student();
-    	KSInstance.setName("杉山");
+    	KSInstance.setName("杉山弘二");
     	KSInstance.setScore(10);
     	
     	name = KSInstance.getName();

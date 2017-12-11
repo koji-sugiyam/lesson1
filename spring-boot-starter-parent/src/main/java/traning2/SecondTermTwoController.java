@@ -14,7 +14,6 @@ import java.text.SimpleDateFormat;
 @EnableAutoConfiguration
 public class SecondTermTwoController {
 
-    private static final int LocalDateTime = 0;
 
 	@RequestMapping("/")
     @ResponseBody
