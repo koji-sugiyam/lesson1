@@ -109,7 +109,7 @@ public class LessonEndpointController {
     	HashMap<Object, Object> dataMap = new HashMap<Object, Object>();
     	
     	dataMap.put("keys",new ArrayList<Object>());
-    	dataMap.put("requests",new HashMap<Object, Object>());
+    	dataMap.put("results",new HashMap<Object, Object>());
     	
     	dataMap.put("keys",keyArray);
     	dataMap.put("results",resultMap);
