@@ -175,6 +175,23 @@ public class getParamController3 {
 
 
     	/****************************/
+
+	    //dataMapをJSONにしてみる
+	    //ついでにtry-catchで
+	    /*
+	    String json = "";
+	    ObjectMapper mapper = new ObjectMapper();
+
+	    try {
+			json = mapper.writeValueAsString(dataMap);
+			System.out.println("json = " + json);
+		} 
+	    catch (Exception e) {
+			e.printStackTrace();
+		}
+		*/
+
+
 	    /*
 	     　	アノテーションでJSONを返したい場合は、
 	    @Controller / @ResponseBody → @RestControllerにし
