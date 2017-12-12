@@ -28,6 +28,7 @@ public class getParamController2 {
     		value = "/sugiyama/{id}/{uuid}/", 
     		method = RequestMethod.GET
     )
+    
     @ResponseBody
     public String home(
     		@PathVariable("id") Integer id, //必須
@@ -203,8 +204,8 @@ public class getParamController2 {
     	/****************************/
 	    /*
 	     　	アノテーションでJSONを返したい場合は、
-	    @Controller → @RestControllerにして
-	     　　返り値の型をHashMapにして、HashMapをreturnすると、
+	    @Controller / @ResponseBody → @RestControllerにし
+	     　　home()の返り値の型をHashMapにして、HashMapをreturnすると、
 	    JSONで返してくれる。
 		＝自分で変換コードを書かないことで、バグが減らせる。
 	    */

@@ -17,7 +17,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @EnableAutoConfiguration
 public class getParamController3 {
 
-    //spring
+    private static final double NaN = 0;
+
+
+	//spring
     public static void main(String[] args) throws Exception {
         SpringApplication.run(getParamController3.class, args);
     }
@@ -27,19 +30,28 @@ public class getParamController3 {
     		value = "/sugiyama/{id}/{uuid}/", 
     		method = RequestMethod.GET
     )
-    @ResponseBody
-    public HashMap home(
+    
+    public HashMap<Object, Object> home(
+    		/*
+    		@PathVariable("id") int id, //必須
+    		@PathVariable("uuid") long uuid, //必須
+    		@RequestParam(name = "score", required = false) double score,
+    		@RequestParam(name = "name", required = false) String name,
+    		@RequestParam(name = "type", required = false) String type
+    		*/
+    		
+    		//null exception が面倒なら　型を変える
     		@PathVariable("id") Integer id, //必須
     		@PathVariable("uuid") Long uuid, //必須
     		@RequestParam(name = "score", required = false) Double score,
-    		@RequestParam(name = "name", required = true) String name,
+    		@RequestParam(name = "name", required = false) String name,
     		@RequestParam(name = "type", required = false) String type
     		) 
     		/*
     		//memo
     		@PathVariableは必須項目になる
     		@RequestParamはrequiredで制御できる
-    		必須の制御はあくまで引数名で、引数の値ではないことに注意
+    		必須の制御はあくまで引数名で、引数の値ではないことに注意    		
     		*/
     {
     	
@@ -55,27 +67,37 @@ public class getParamController3 {
     	//ループで回してみる
     	
     	//配列で必要なkey/valueを設定
-    	HashMap<String,String> resultMap = new HashMap<String,String>();
+    	HashMap<String,Object> resultMap = new HashMap<String,Object>();
     	
     	//id
-    	resultMap.put("id",id.toString());
+    	resultMap.put("id",id);
     	
     	//uuid
-    	resultMap.put("uuid",uuid.toString());
+    	resultMap.put("uuid",uuid);
 
     	//score
-    	//Stringは引数がないとnullになり
-    	//nullにtoString()するとエラーになるので、判定すること
-    	if(score != null) {//任意なのでnullでなければ
-    		resultMap.put("score",score.toString());
+    	//dounbleは「NaN」か「java.lang.Double.isNaN()」以外では判定できない
+    	//if(score != NaN) {//任意なのでNaNでなければ
+        if(score != null) {//任意なのでnullでなければ
+    		resultMap.put("score",score);
+    	}else {
+    		resultMap.put("score","");
     	}
     	
     	//name
-    		resultMap.put("name",name);
+    	//Stringは引数がないとnullになるので任意の場合は判定する
+    	if(name != null) {//任意なのでnullでなければ
+	    	resultMap.put("name",name);
+    	}else {
+    		resultMap.put("name","");
+    	}
     	
     	//type
+    	//Stringは引数がないとnullになるので任意の場合は判定する
     	if(type != null) {//任意なのでnullでなければ
     		resultMap.put("type",type);
+    	}else {
+    		resultMap.put("type","");
     	}
     	
     	System.out.println(resultMap);
@@ -109,10 +131,10 @@ public class getParamController3 {
     	/****************************/
 	    //keyArrayとresultMapを多次元配列にしてみる
 
-    	HashMap dataMap = new HashMap<Object, Object>();
+    	HashMap<Object, Object> dataMap = new HashMap<Object, Object>();
     	
-    	dataMap.put("keys",new ArrayList());
-    	dataMap.put("requests",new HashMap());
+    	dataMap.put("keys",new ArrayList<Object>());
+    	dataMap.put("requests",new HashMap<Object, Object>());
     	
     	dataMap.put("keys",keyArray);
     	dataMap.put("results",resultMap);
@@ -131,14 +153,14 @@ public class getParamController3 {
     	dataMapKeyArray = (ArrayList<String>)dataMap.get("keys");
     	
     	//HashMapにdataMap["results"]を
-    	HashMap<String,String> dataMapResultMap = new HashMap<String,String>();
-    	dataMapResultMap = (HashMap<String,String>)dataMap.get("results");
+    	HashMap<String,Object> dataMapResultMap = new HashMap<String,Object>();
+    	dataMapResultMap = (HashMap<String, Object>)dataMap.get("results");
 
     	format = "%s = %s / ";
     	data = "";
 	    for( String keyString : dataMapKeyArray) {
 
-	    	String resultstring = dataMapResultMap.get(keyString);
+	    	String resultstring = dataMapResultMap.get(keyString).toString();
 		    System.out.println(String.format("dataMapresultMap / k = %s : v = %s",keyString,resultstring));
 
 	        data +=  String.format(format, keyString, resultstring);
@@ -155,8 +177,8 @@ public class getParamController3 {
     	/****************************/
 	    /*
 	     　	アノテーションでJSONを返したい場合は、
-	    @Controller → @RestControllerにして
-	     　　返り値の型をHashMapにして、HashMapをreturnすると、
+	    @Controller / @ResponseBody → @RestControllerにし
+	     　　home()の返り値の型をHashMapにして、HashMapをreturnすると、
 	    JSONで返してくれる。
 		＝自分で変換コードを書かないことで、バグが減らせる。
 	    */
