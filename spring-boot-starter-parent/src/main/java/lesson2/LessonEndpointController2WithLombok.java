@@ -29,7 +29,7 @@ public class LessonEndpointController2WithLombok {
     		@RequestParam(name = "name", required = false) String name
     		) {
     	
-    	return new Response();
+    	return new Response(id, uuid, score, name);
     	
     }
    
@@ -44,7 +44,15 @@ public class LessonEndpointController2WithLombok {
      	private Long uuid;
      	private Double score;
      	private String name;
-     	
+
+     	//コンストラクタ
+     	public Response(Integer id, Long uuid, Double score, String name) {
+     		
+     		this.id = id;
+     		this.uuid = uuid;
+     		this.score = score;
+     		this.name = name;
+     	}
     }
   
 }
